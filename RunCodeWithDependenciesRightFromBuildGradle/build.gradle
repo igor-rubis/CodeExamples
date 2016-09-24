@@ -1,0 +1,27 @@
+/**
+ * Copyright 2016 Igor Rubis
+ * Licensed under the Apache License, Version 2.0
+ */
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.seleniumhq.selenium:selenium-java:2.53.0'
+    }
+}
+
+import org.openqa.selenium.firefox.FirefoxDriver
+
+task go() {
+    def driver = new FirefoxDriver()
+    try {
+        driver.navigate().to(System.getProperty('url'))
+    } catch (Exception ignored) {
+        driver.quit()
+    } finally {
+        System.exit(0)
+    }
+}
